@@ -1,0 +1,488 @@
+/* Theme Variables */
+:root {
+  --bg-light: #ffffff;
+  --text-light: #212529;
+  --card-bg-light: #ffffff;
+  --border-light: #dee2e6;
+  
+  --bg-dark: #1a1a1a;
+  --text-dark: #e9ecef;
+  --card-bg-dark: #2d2d2d;
+  --border-dark: #404040;
+}
+
+/* Layout Styles for Footer Positioning */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1 0 auto;
+}
+
+/* Base Styles */
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.light-mode {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+/* Search Form */
+.search-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.search-input {
+  font-size: 1.1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.dark-mode .search-input {
+  background-color: var(--card-bg-dark);
+  color: var(--text-dark);
+  border-color: var(--border-dark);
+}
+
+.dark-mode .search-input::placeholder {
+  color: #6c757d;
+}
+
+/* Results Section */
+.results-section {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.command-item {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dark-mode .command-item {
+  background-color: var(--card-bg-dark);
+  border-color: var(--border-dark) !important;
+}
+
+.command-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.command-name {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.command-description {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.example-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.example-item {
+  margin-bottom: 1rem;
+}
+
+/* Terminal Styling */
+.terminal-container {
+  background-color: #2b2b2b;
+  border-radius: 6px;
+  margin: 1rem 0;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.terminal-header {
+  background-color: #1d1d1d;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-button.red { background-color: #ff5f56; }
+.terminal-button.yellow { background-color: #ffbd2e; }
+.terminal-button.green { background-color: #27c93f; }
+
+.terminal-title {
+  color: #999;
+  font-size: 0.8rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.terminal-body {
+  padding: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1e1e1e;
+}
+
+.terminal-prompt {
+  color: #27c93f;
+  margin-right: 8px;
+  user-select: none;
+}
+
+.command-code {
+  background-color: transparent;
+  color: #f8f8f8;
+  font-family: 'Monaco', 'Consolas', monospace;
+  font-size: 0.9rem;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.copy-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.copy-button {
+  background: transparent;
+  border: none;
+  color: #a0a0a0;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0.8;
+}
+
+.copy-button:hover {
+  color: #ffffff;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.copied-text {
+  color: #27c93f;
+  font-size: 0.9rem;
+  animation: fadeInOut 2s ease;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.dark-mode .copy-button {
+  color: #d0d0d0;
+}
+
+.dark-mode .copy-button:hover {
+  color: #ffffff;
+}
+
+.dark-mode .terminal-container {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .command-code {
+  color: #e9ecef;
+}
+
+/* Responsive adjustments for terminal */
+@media (max-width: 768px) {
+  .terminal-container {
+    margin: 0.5rem 0;
+  }
+
+  .terminal-body {
+    padding: 12px;
+  }
+
+  .terminal-button {
+    width: 10px;
+    height: 10px;
+  }
+
+  .command-code {
+    font-size: 0.8rem;
+  }
+
+  .copy-button {
+    padding: 2px 6px;
+  }
+}
+
+/* Animation for copy button */
+.copy-button {
+  transform: scale(1);
+  transition: transform 0.1s ease-in-out;
+}
+
+.copy-button:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header-section h1 {
+    font-size: 2rem;
+  }
+
+  .command-name {
+    font-size: 1.1rem;
+  }
+
+  .command-code {
+    font-size: 0.8rem;
+    padding: 0.4rem;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .theme-toggle {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.command-item {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Dark Mode Overrides */
+.dark-mode .command-item {
+  background-color: var(--card-bg-dark);
+  border-color: var(--border-dark) !important;
+}
+
+.dark-mode .command-name {
+  color: #fff !important;
+}
+
+.dark-mode .command-description,
+.dark-mode .examples-section strong,
+.dark-mode .example-description {
+  color: var(--text-dark) !important;
+}
+
+.dark-mode .search-input {
+  background-color: var(--card-bg-dark);
+  color: var(--text-dark);
+  border-color: var(--border-dark);
+}
+
+.dark-mode .search-input::placeholder {
+  color: #6c757d;
+}
+
+.dark-mode .terminal-container {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .command-code {
+  color: #e9ecef;
+}
+
+.dark-mode .no-results .text-muted {
+  color: #adb5bd !important;
+}
+
+.dark-mode .lead {
+  color: var(--text-dark);
+}
+
+/* Update example description color for both themes */
+.example-description {
+  color: #6c757d;
+}
+
+.dark-mode .example-description {
+  color: #adb5bd !important;
+}
+
+/* Update text-muted color in dark mode */
+.dark-mode .text-muted {
+  color: #adb5bd !important;
+}
+
+/* Ensure primary colored text is visible in dark mode */
+.dark-mode .text-primary {
+  color: #5b9eff !important;
+}
+
+/* Command Link Styles */
+.command-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.command-link:hover {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.command-link::after {
+  content: '↗';
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+/* Dark mode specific styles */
+.dark-mode .command-link {
+  color: #5b9eff;
+}
+
+.dark-mode .command-link:hover {
+  color: #7aafff;
+}
+
+/* Logo Styles */
+.app-logo {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  margin-bottom: -2rem;
+  display: block;
+  animation: logo-float 3s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive logo size */
+@media (max-width: 768px) {
+  .app-logo {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Update Simple Footer Styles */
+.simple-footer {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border-light);
+  background-color: var(--bg-light);
+  width: 100%;
+}
+
+.dark-mode.simple-footer {
+  border-top-color: var(--border-dark);
+  background-color: var(--bg-dark);
+}
+
+/* When no results, push footer to bottom */
+.container:empty + .simple-footer,
+.container:not(:has(.results-section)) + .simple-footer {
+  margin-top: 20rem;
+}
+
+.simple-footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.simple-footer .copyright {
+  color: inherit;
+  opacity: 0.8;
+}
+
+.simple-footer .credits {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.simple-footer .heart-icon {
+  color: #ff4b4b;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.simple-footer a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.simple-footer a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+  .simple-footer {
+    padding: 1rem 0;
+    margin-top: 2rem;
+  }
+
+  .simple-footer .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+} 

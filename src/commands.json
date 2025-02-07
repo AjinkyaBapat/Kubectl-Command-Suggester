@@ -1,0 +1,919 @@
+{
+  "commands": [
+    {
+      "name": "kubectl get",
+      "description": "Display one or many resources",
+      "examples": [
+        {
+          "command": "kubectl get pods",
+          "description": "List all pods in the default namespace"
+        },
+        {
+          "command": "kubectl get services",
+          "description": "List all services in the default namespace"
+        },
+        {
+          "command": "kubectl get nodes",
+          "description": "List all nodes in the cluster"
+        },
+        {
+          "command": "kubectl get pods -o wide",
+          "description": "List all pods with additional details"
+        },
+        {
+          "command": "kubectl get pods --all-namespaces",
+          "description": "List all pods in all namespaces"
+        },
+        {
+          "command": "kubectl get pods -o json",
+          "description": "List all pods in JSON format"
+        }
+      ]
+    },
+    {
+      "name": "kubectl describe",
+      "description": "Show detailed information about a resource",
+      "examples": [
+        {
+          "command": "kubectl describe pod <pod-name>",
+          "description": "Describe a specific pod"
+        },
+        {
+          "command": "kubectl describe service <service-name>",
+          "description": "Describe a specific service"
+        },
+        {
+          "command": "kubectl describe node <node-name>",
+          "description": "Describe a specific node"
+        }
+      ]
+    },
+    {
+      "name": "kubectl apply",
+      "description": "Apply a configuration to a resource by file or stdin",
+      "examples": [
+        {
+          "command": "kubectl apply -f <file.yaml>",
+          "description": "Apply a configuration from a file"
+        },
+        {
+          "command": "kubectl apply -f <directory>",
+          "description": "Apply configurations from all files in a directory"
+        }
+      ]
+    },
+    {
+      "name": "kubectl create",
+      "description": "Create a resource by file or stdin",
+      "examples": [
+        {
+          "command": "kubectl create -f <file.yaml>",
+          "description": "Create a resource from a file"
+        },
+        {
+          "command": "kubectl create deployment <deployment-name> --image=<image>",
+          "description": "Create a deployment with a specified image"
+        },
+        {
+          "command": "kubectl create namespace <namespace-name>",
+          "description": "Create a new namespace"
+        }
+      ]
+    },
+    {
+      "name": "kubectl delete",
+      "description": "Delete resources by file, stdin, resource and name, or by resources and label selector",
+      "examples": [
+        {
+          "command": "kubectl delete pod <pod-name>",
+          "description": "Delete a specific pod"
+        },
+        {
+          "command": "kubectl delete -f <file.yaml>",
+          "description": "Delete resources defined in a file"
+        },
+        {
+          "command": "kubectl delete all --all",
+          "description": "Delete all resources in the default namespace"
+        }
+      ]
+    },
+    {
+      "name": "kubectl exec",
+      "description": "Execute a command in a container",
+      "examples": [
+        {
+          "command": "kubectl exec -it <pod-name> -- /bin/bash",
+          "description": "Open an interactive bash shell in a pod"
+        },
+        {
+          "command": "kubectl exec <pod-name> -- ls /path",
+          "description": "List files in a specific directory in a pod"
+        }
+      ]
+    },
+    {
+      "name": "kubectl logs",
+      "description": "Print the logs for a container in a pod",
+      "examples": [
+        {
+          "command": "kubectl logs <pod-name>",
+          "description": "Print logs from a specific pod"
+        },
+        {
+          "command": "kubectl logs -f <pod-name>",
+          "description": "Stream logs from a specific pod"
+        },
+        {
+          "command": "kubectl logs <pod-name> -c <container-name>",
+          "description": "Print logs from a specific container in a pod"
+        }
+      ]
+    },
+    {
+      "name": "kubectl expose",
+      "description": "Expose a resource as a new Kubernetes Service",
+      "examples": [
+        {
+          "command": "kubectl expose deployment <deployment-name> --type=NodePort --name=<service-name>",
+          "description": "Expose a deployment as a NodePort service"
+        },
+        {
+          "command": "kubectl expose pod <pod-name> --type=ClusterIP --name=<service-name>",
+          "description": "Expose a pod as a ClusterIP service"
+        }
+      ]
+    },
+    {
+      "name": "kubectl scale",
+      "description": "Set a new size for a Deployment, ReplicaSet, or Replication Controller",
+      "examples": [
+        {
+          "command": "kubectl scale deployment <deployment-name> --replicas=<number>",
+          "description": "Scale a deployment to a specified number of replicas"
+        },
+        {
+          "command": "kubectl scale replicaset <replicaset-name> --replicas=<number>",
+          "description": "Scale a replicaset to a specified number of replicas"
+        }
+      ]
+    },
+    {
+      "name": "kubectl rollout",
+      "description": "Manage the rollout of a resource",
+      "examples": [
+        {
+          "command": "kubectl rollout status deployment/<deployment-name>",
+          "description": "Check the rollout status of a deployment"
+        },
+        {
+          "command": "kubectl rollout undo deployment/<deployment-name>",
+          "description": "Undo the last rollout of a deployment"
+        },
+        {
+          "command": "kubectl rollout restart deployment/<deployment-name>",
+          "description": "Restart a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl config",
+      "description": "Modify kubeconfig files",
+      "examples": [
+        {
+          "command": "kubectl config view",
+          "description": "Display merged kubeconfig settings"
+        },
+        {
+          "command": "kubectl config use-context <context-name>",
+          "description": "Set the default context to a specified context"
+        },
+        {
+          "command": "kubectl config set-context --current --namespace=<namespace-name>",
+          "description": "Set the default namespace for the current context"
+        }
+      ]
+    },
+    {
+      "name": "kubectl cluster-info",
+      "description": "Display endpoint information about the cluster",
+      "examples": [
+        {
+          "command": "kubectl cluster-info",
+          "description": "Display cluster info"
+        }
+      ]
+    },
+    {
+      "name": "kubectl version",
+      "description": "Print the client and server version information",
+      "examples": [
+        {
+          "command": "kubectl version",
+          "description": "Display version info"
+        },
+        {
+          "command": "kubectl version --client",
+          "description": "Display client version info"
+        }
+      ]
+    },
+    {
+      "name": "kubectl annotate",
+      "description": "Update the annotations on a resource",
+      "examples": [
+        {
+          "command": "kubectl annotate pod <pod-name> description=\"Backend pod for service A\"",
+          "description": "Add an annotation to a specific pod"
+        }
+      ]
+    },
+    {
+      "name": "kubectl set",
+      "description": "Configure application resources",
+      "examples": [
+        {
+          "command": "kubectl set image deployment/<deployment-name> <container-name>=<image>",
+          "description": "Update the image of a container in a deployment"
+        },
+        {
+          "command": "kubectl set resources deployment <deployment-name> --limits=cpu=200m,memory=512Mi",
+          "description": "Set resource limits for a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl edit",
+      "description": "Edit a resource on the server",
+      "examples": [
+        {
+          "command": "kubectl edit deployment/<deployment-name>",
+          "description": "Edit a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl patch",
+      "description": "Update field(s) of a resource using strategic merge patch",
+      "examples": [
+        {
+          "command": "kubectl patch deployment <deployment-name> -p '{\"spec\":{\"replicas\":<number>}}'",
+          "description": "Patch a deployment to set the number of replicas"
+        }
+      ]
+    },
+    {
+      "name": "kubectl replace",
+      "description": "Replace a resource by filename or stdin",
+      "examples": [
+        {
+          "command": "kubectl replace -f <file.yaml>",
+          "description": "Replace a resource from a file"
+        }
+      ]
+    },
+    {
+      "name": "kubectl run",
+      "description": "Run a specified image in a pod",
+      "examples": [
+        {
+          "command": "kubectl run <pod-name> --image=<image-name>",
+          "description": "Run a pod with a specified image"
+        }
+      ]
+    },
+    {
+      "name": "kubectl explain",
+      "description": "Describe the fields associated with each supported API resource",
+      "examples": [
+        {
+          "command": "kubectl explain pods",
+          "description": "Explain the fields of a pod resource"
+        }
+      ]
+    },
+    {
+      "name": "kubectl cp",
+      "description": "Copy files and directories to and from containers",
+      "examples": [
+        {
+          "command": "kubectl cp <pod-name>:/path/to/remote/file /path/to/local/file",
+          "description": "Copy a file from a pod to the local filesystem"
+        }
+      ]
+    },
+    {
+      "name": "kubectl auth",
+      "description": "Inspect authorization",
+      "examples": [
+        {
+          "command": "kubectl auth can-i create pods",
+          "description": "Check if you can create pods"
+        }
+      ]
+    },
+    {
+      "name": "kubectl certificate",
+      "description": "Modify certificate resources",
+      "examples": [
+        {
+          "command": "kubectl certificate approve <certificate-name>",
+          "description": "Approve a certificate signing request"
+        }
+      ]
+    },
+    {
+      "name": "kubectl cordon",
+      "description": "Mark node as unschedulable",
+      "examples": [
+        {
+          "command": "kubectl cordon <node-name>",
+          "description": "Mark a node as unschedulable"
+        }
+      ]
+    },
+    {
+      "name": "kubectl uncordon",
+      "description": "Mark node as schedulable",
+      "examples": [
+        {
+          "command": "kubectl uncordon <node-name>",
+          "description": "Mark a node as schedulable"
+        }
+      ]
+    },
+    {
+      "name": "kubectl drain",
+      "description": "Drain node in preparation for maintenance",
+      "examples": [
+        {
+          "command": "kubectl drain <node-name>",
+          "description": "Drain a node"
+        }
+      ]
+    },
+    {
+      "name": "kubectl taint",
+      "description": "Update the taints on one or more nodes",
+      "examples": [
+        {
+          "command": "kubectl taint nodes <node-name> key=value:NoSchedule",
+          "description": "Add a taint to a node"
+        }
+      ]
+    },
+    {
+      "name": "kubectl top",
+      "description": "Display resource (CPU/memory/storage) usage",
+      "examples": [
+        {
+          "command": "kubectl top nodes",
+          "description": "Display resource usage for nodes"
+        },
+        {
+          "command": "kubectl top pods",
+          "description": "Display resource usage for pods"
+        }
+      ]
+    },
+    {
+      "name": "kubectl diff",
+      "description": "Display the difference between the current state of the cluster and the state described in a manifest file",
+      "examples": [
+        {
+          "command": "kubectl diff -f <file.yaml>",
+          "description": "Display differences between the current state and a manifest file"
+        }
+      ]
+    },
+    {
+      "name": "kubectl autoscale",
+      "description": "Auto-scale a deployment, replica set, stateful set, or replication controller",
+      "examples": [
+        {
+          "command": "kubectl autoscale deployment <deployment-name> --min=<min-replicas> --max=<max-replicas> --cpu-percent=<cpu-percent>",
+          "description": "Auto-scale a deployment based on CPU usage"
+        }
+      ]
+    },
+    {
+      "name": "kubectl rollout history",
+      "description": "View the rollout history of a resource",
+      "examples": [
+        {
+          "command": "kubectl rollout history deployment/<deployment-name>",
+          "description": "View the rollout history of a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl rollout pause",
+      "description": "Pause the rollout of a resource",
+      "examples": [
+        {
+          "command": "kubectl rollout pause deployment/<deployment-name>",
+          "description": "Pause the rollout of a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl rollout resume",
+      "description": "Resume the rollout of a resource",
+      "examples": [
+        {
+          "command": "kubectl rollout resume deployment/<deployment-name>",
+          "description": "Resume the rollout of a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl rollout undo",
+      "description": "Undo the last rollout of a resource",
+      "examples": [
+        {
+          "command": "kubectl rollout undo deployment/<deployment-name>",
+          "description": "Undo the last rollout of a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl set env",
+      "description": "Update environment variables on a resource",
+      "examples": [
+        {
+          "command": "kubectl set env deployment/<deployment-name> KEY=VALUE",
+          "description": "Set an environment variable on a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl set image",
+      "description": "Update the image of a resource",
+      "examples": [
+        {
+          "command": "kubectl set image deployment/<deployment-name> <container-name>=<image>",
+          "description": "Update the image of a container in a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl set resources",
+      "description": "Update the resource requirements of a resource",
+      "examples": [
+        {
+          "command": "kubectl set resources deployment <deployment-name> --limits=cpu=200m,memory=512Mi",
+          "description": "Set resource limits for a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl set selector",
+      "description": "Update the selector of a resource",
+      "examples": [
+        {
+          "command": "kubectl set selector deployment <deployment-name> key=value",
+          "description": "Set a selector on a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl set serviceaccount",
+      "description": "Update the service account of a resource",
+      "examples": [
+        {
+          "command": "kubectl set serviceaccount deployment <deployment-name> <service-account-name>",
+          "description": "Set a service account on a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl set subject",
+      "description": "Update the subject of a role binding or cluster role binding",
+      "examples": [
+        {
+          "command": "kubectl set subject rolebinding <rolebinding-name> --user=<username>",
+          "description": "Set a user as the subject of a role binding"
+        }
+      ]
+    },
+    {
+      "name": "kubectl alpha",
+      "description": "Experimental commands for alpha features",
+      "examples": [
+        {
+          "command": "kubectl alpha debug -it <pod-name> --image=<debug-image> -- /bin/bash",
+          "description": "Open an interactive debug session in a pod"
+        }
+      ]
+    },
+    {
+      "name": "kubectl api-resources",
+      "description": "Print the supported API resources on the server",
+      "examples": [
+        {
+          "command": "kubectl api-resources",
+          "description": "List all supported API resources"
+        }
+      ]
+    },
+    {
+      "name": "kubectl api-versions",
+      "description": "Print the supported API versions on the server",
+      "examples": [
+        {
+          "command": "kubectl api-versions",
+          "description": "List all supported API versions"
+        }
+      ]
+    },
+    {
+      "name": "kubectl apply",
+      "description": "Apply a configuration to a resource by file or stdin",
+      "examples": [
+        {
+          "command": "kubectl apply -f <file.yaml>",
+          "description": "Apply a configuration from a file"
+        },
+        {
+          "command": "kubectl apply -f <directory>",
+          "description": "Apply configurations from all files in a directory"
+        }
+      ]
+    },
+    {
+      "name": "kubectl attach",
+      "description": "Attach to a running container",
+      "examples": [
+        {
+          "command": "kubectl attach <pod-name> -c <container-name>",
+          "description": "Attach to a specific container in a pod"
+        }
+      ]
+    },
+    {
+      "name": "kubectl auth can-i",
+      "description": "Check if you can perform an action",
+      "examples": [
+        {
+          "command": "kubectl auth can-i create pods",
+          "description": "Check if you can create pods"
+        }
+      ]
+    },
+    {
+      "name": "kubectl autoscale",
+      "description": "Auto-scale a deployment, replica set, stateful set, or replication controller",
+      "examples": [
+        {
+          "command": "kubectl autoscale deployment <deployment-name> --min=<min-replicas> --max=<max-replicas> --cpu-percent=<cpu-percent>",
+          "description": "Auto-scale a deployment based on CPU usage"
+        }
+      ]
+    },
+    {
+      "name": "kubectl cordon",
+      "description": "Mark node as unschedulable",
+      "examples": [
+        {
+          "command": "kubectl cordon <node-name>",
+          "description": "Mark a node as unschedulable"
+        }
+      ]
+    },
+    {
+      "name": "kubectl cp",
+      "description": "Copy files and directories to and from containers",
+      "examples": [
+        {
+          "command": "kubectl cp <pod-name>:/path/to/remote/file /path/to/local/file",
+          "description": "Copy a file from a pod to the local filesystem"
+        }
+      ]
+    },
+    {
+      "name": "kubectl create",
+      "description": "Create a resource by file or stdin",
+      "examples": [
+        {
+          "command": "kubectl create -f <file.yaml>",
+          "description": "Create a resource from a file"
+        },
+        {
+          "command": "kubectl create deployment <deployment-name> --image=<image>",
+          "description": "Create a deployment with a specified image"
+        },
+        {
+          "command": "kubectl create namespace <namespace-name>",
+          "description": "Create a new namespace"
+        }
+      ]
+    },
+    {
+      "name": "kubectl delete",
+      "description": "Delete resources by file, stdin, resource and name, or by resources and label selector",
+      "examples": [
+        {
+          "command": "kubectl delete pod <pod-name>",
+          "description": "Delete a specific pod"
+        },
+        {
+          "command": "kubectl delete -f <file.yaml>",
+          "description": "Delete resources defined in a file"
+        },
+        {
+          "command": "kubectl delete all --all",
+          "description": "Delete all resources in the default namespace"
+        }
+      ]
+    },
+    {
+      "name": "kubectl describe",
+      "description": "Show detailed information about a resource",
+      "examples": [
+        {
+          "command": "kubectl describe pod <pod-name>",
+          "description": "Describe a specific pod"
+        },
+        {
+          "command": "kubectl describe service <service-name>",
+          "description": "Describe a specific service"
+        },
+        {
+          "command": "kubectl describe node <node-name>",
+          "description": "Describe a specific node"
+        }
+      ]
+    },
+    {
+      "name": "kubectl diff",
+      "description": "Display the difference between the current state of the cluster and the state described in a manifest file",
+      "examples": [
+        {
+          "command": "kubectl diff -f <file.yaml>",
+          "description": "Display differences between the current state and a manifest file"
+        }
+      ]
+    },
+    {
+      "name": "kubectl drain",
+      "description": "Drain node in preparation for maintenance",
+      "examples": [
+        {
+          "command": "kubectl drain <node-name>",
+          "description": "Drain a node"
+        }
+      ]
+    },
+    {
+      "name": "kubectl edit",
+      "description": "Edit a resource on the server",
+      "examples": [
+        {
+          "command": "kubectl edit deployment/<deployment-name>",
+          "description": "Edit a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl exec",
+      "description": "Execute a command in a container",
+      "examples": [
+        {
+          "command": "kubectl exec -it <pod-name> -- /bin/bash",
+          "description": "Open an interactive bash shell in a pod"
+        },
+        {
+          "command": "kubectl exec <pod-name> -- ls /path",
+          "description": "List files in a specific directory in a pod"
+        }
+      ]
+    },
+    {
+      "name": "kubectl explain",
+      "description": "Describe the fields associated with each supported API resource",
+      "examples": [
+        {
+          "command": "kubectl explain pods",
+          "description": "Explain the fields of a pod resource"
+        }
+      ]
+    },
+    {
+      "name": "kubectl expose",
+      "description": "Expose a resource as a new Kubernetes Service",
+      "examples": [
+        {
+          "command": "kubectl expose deployment <deployment-name> --type=NodePort --name=<service-name>",
+          "description": "Expose a deployment as a NodePort service"
+        },
+        {
+          "command": "kubectl expose pod <pod-name> --type=ClusterIP --name=<service-name>",
+          "description": "Expose a pod as a ClusterIP service"
+        }
+      ]
+    },
+    {
+      "name": "kubectl get",
+      "description": "Display one or many resources",
+      "examples": [
+        {
+          "command": "kubectl get pods",
+          "description": "List all pods in the default namespace"
+        },
+        {
+          "command": "kubectl get services",
+          "description": "List all services in the default namespace"
+        },
+        {
+          "command": "kubectl get nodes",
+          "description": "List all nodes in the cluster"
+        },
+        {
+          "command": "kubectl get pods -o wide",
+          "description": "List all pods with additional details"
+        },
+        {
+          "command": "kubectl get pods --all-namespaces",
+          "description": "List all pods in all namespaces"
+        },
+        {
+          "command": "kubectl get pods -o json",
+          "description": "List all pods in JSON format"
+        }
+      ]
+    },
+    {
+      "name": "kubectl label",
+      "description": "Update the labels on a resource",
+      "examples": [
+        {
+          "command": "kubectl label pod <pod-name> key=value",
+          "description": "Add a label to a specific pod"
+        }
+      ]
+    },
+    {
+      "name": "kubectl logs",
+      "description": "Print the logs for a container in a pod",
+      "examples": [
+        {
+          "command": "kubectl logs <pod-name>",
+          "description": "Print logs from a specific pod"
+        },
+        {
+          "command": "kubectl logs -f <pod-name>",
+          "description": "Stream logs from a specific pod"
+        },
+        {
+          "command": "kubectl logs <pod-name> -c <container-name>",
+          "description": "Print logs from a specific container in a pod"
+        }
+      ]
+    },
+    {
+      "name": "kubectl patch",
+      "description": "Update field(s) of a resource using strategic merge patch",
+      "examples": [
+        {
+          "command": "kubectl patch deployment <deployment-name> -p '{\"spec\":{\"replicas\":<number>}}'",
+          "description": "Patch a deployment to set the number of replicas"
+        }
+      ]
+    },
+    {
+      "name": "kubectl port-forward",
+      "description": "Forward one or more local ports to a pod",
+      "examples": [
+        {
+          "command": "kubectl port-forward <pod-name> <local-port>:<pod-port>",
+          "description": "Forward a local port to a pod port"
+        }
+      ]
+    },
+    {
+      "name": "kubectl proxy",
+      "description": "Run a proxy to the Kubernetes API server",
+      "examples": [
+        {
+          "command": "kubectl proxy",
+          "description": "Run a proxy to the Kubernetes API server"
+        }
+      ]
+    },
+    {
+      "name": "kubectl replace",
+      "description": "Replace a resource by filename or stdin",
+      "examples": [
+        {
+          "command": "kubectl replace -f <file.yaml>",
+          "description": "Replace a resource from a file"
+        }
+      ]
+    },
+    {
+      "name": "kubectl rollout",
+      "description": "Manage the rollout of a resource",
+      "examples": [
+        {
+          "command": "kubectl rollout status deployment/<deployment-name>",
+          "description": "Check the rollout status of a deployment"
+        },
+        {
+          "command": "kubectl rollout undo deployment/<deployment-name>",
+          "description": "Undo the last rollout of a deployment"
+        },
+        {
+          "command": "kubectl rollout restart deployment/<deployment-name>",
+          "description": "Restart a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl run",
+      "description": "Run a specified image in a pod",
+      "examples": [
+        {
+          "command": "kubectl run <pod-name> --image=<image-name>",
+          "description": "Run a pod with a specified image"
+        }
+      ]
+    },
+    {
+      "name": "kubectl scale",
+      "description": "Set a new size for a Deployment, ReplicaSet, or Replication Controller",
+      "examples": [
+        {
+          "command": "kubectl scale deployment <deployment-name> --replicas=<number>",
+          "description": "Scale a deployment to a specified number of replicas"
+        },
+        {
+          "command": "kubectl scale replicaset <replicaset-name> --replicas=<number>",
+          "description": "Scale a replicaset to a specified number of replicas"
+        }
+      ]
+    },
+    {
+      "name": "kubectl set",
+      "description": "Configure application resources",
+      "examples": [
+        {
+          "command": "kubectl set image deployment/<deployment-name> <container-name>=<image>",
+          "description": "Update the image of a container in a deployment"
+        },
+        {
+          "command": "kubectl set resources deployment <deployment-name> --limits=cpu=200m,memory=512Mi",
+          "description": "Set resource limits for a deployment"
+        }
+      ]
+    },
+    {
+      "name": "kubectl taint",
+      "description": "Update the taints on one or more nodes",
+      "examples": [
+        {
+          "command": "kubectl taint nodes <node-name> key=value:NoSchedule",
+          "description": "Add a taint to a node"
+        }
+      ]
+    },
+    {
+      "name": "kubectl top",
+      "description": "Display resource (CPU/memory/storage) usage",
+      "examples": [
+        {
+          "command": "kubectl top nodes",
+          "description": "Display resource usage for nodes"
+        },
+        {
+          "command": "kubectl top pods",
+          "description": "Display resource usage for pods"
+        }
+      ]
+    },
+    {
+      "name": "kubectl uncordon",
+      "description": "Mark node as schedulable",
+      "examples": [
+        {
+          "command": "kubectl uncordon <node-name>",
+          "description": "Mark a node as schedulable"
+        }
+      ]
+    },
+    {
+      "name": "kubectl version",
+      "description": "Print the client and server version information",
+      "examples": [
+        {
+          "command": "kubectl version",
+          "description": "Display version info"
+        },
+        {
+          "command": "kubectl version --client",
+          "description": "Display client version info"
+        }
+      ]
+    }
+  ]
+}
+
