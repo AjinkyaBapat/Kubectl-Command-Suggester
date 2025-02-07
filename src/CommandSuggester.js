@@ -369,7 +369,7 @@ const CommandSuggester = () => {
             <div className="credits">
               Made with <FaHeart className="heart-icon" /> by{' '}
               <a 
-                href="https://github.com/ajinkyabapat1" 
+                href="https://github.com/AjinkyaBapat" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
